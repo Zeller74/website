@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<style>
+#top,
+#bottom {
+    position: fixed;
+    left: 0;
+    right: 0;
+    height: 50%;
+}
+
+#top {
+    top: 0;
+    background-color: #f00;
+}
+
+#bottom {
+    bottom: 0;
+    background-color: #f0f;
+}
+</style>
+<div id="top" onmouseover="this.style.background='#0ff';" onmouseout="this.style.background='#f00';">top</div>
+<div id="bottom" onmouseover="this.style.background='#0f0'" onmouseout="this.style.background='#ff0';">bottom</div>
+
+</html>
