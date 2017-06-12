@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="page2.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+
+    <div class=wrapper>
+
+        <div class =top-right>
+            <button type=button class="button">Hit the lights</button>
+        </div>
+        <div class =bottom-right>
+        </div>
+        <div class=top-left>
+        </div>
+        <div class=bottom-left>
+        </div>
+    </div>
+
+
+</body>
+<script>
+var tr = getColor(".top-right");
+var tl = getColor(".top-left");
+var br = getColor(".bottom-right");
+var bl = getColor(".bottom-left");
+var array = "0123456789abcdef";
+var color = '';
+function randomColor(){
+    var answer = '#';
+    var letters = "1234567890abcdef";
+    for(let i = 0; i < 6; i++){
+        var position = Math.floor(Math.random() * 16);
+        answer += letters[position];
+    }
+    return answer;
+}
+function hexc(colorval) {
+    var parts = colorval.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+    delete(parts[0]);
+    for (let i = 1; i <= 3; ++i) {
+        parts[i] = parseInt(parts[i]).toString(16);
+        if (parts[i].length == 1) parts[i] = '0' + parts[i];
+    }
+    color = '#' + parts.join('');
+}
+function getColor(region){
+  var x = $(region).css('backgroundColor');
+  hexc(x, color);
+  console.log(color);
+  return color;
+}
+$('button').click(function(){
+    $('.top-right').css("background-color", randomColor());
+    $('.top-left').css("background-color", randomColor());
+    $('.bottom-right').css("background-color", randomColor());
+    $('.bottom-left').css("background-color", randomColor());
+});
+$(".top-right").hover(function(){
+  $(this).css("background-color", tl);
+
+}, function(){
+  $(this).css("background-color", tr);
+});
+$(".top-left").hover(function(){
+  $(this).css("background-color", tr);
+
+}, function(){
+  $(this).css("background-color", tl);
+});
+$(".bottom-right").hover(function(){
+  $(this).css("background-color", bl);
+
+}, function(){
+  $(this).css("background-color", br);
+});
+$(".bottom-left").hover(function(){
+  $(this).css("background-color", br);
+
+}, function(){
+  $(this).css("background-color", bl);
+});
+
+
+</script>
+</html>
