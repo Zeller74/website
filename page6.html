@@ -1,70 +1,153 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <title>Zeller74.com | Home</title>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/style.css" />
+</head>
 <style>
-#list li {
-display: inline;
-margin: 10px;
-text-align: center;
-   }
-
-#list a {
-text-decoration: none;
-color: green;
+@charset "utf-8";
+.parallax {
+    background-image: url("McCree.jpg");
+    min-height: 700px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
-
-#list {
-background-color: black;
-width:  300px;
-height: 25px;
-border-radius: 5px;
+body {
+    margin: 0;
+    background-color: #000000;
 }
-#header {
-background: none repeat scroll 0 0 #363E45;
-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-height: 56px;
-position: fixed;
-width: 100%;
-height: 150px;
+.header {
+    width: 100%;
+    height: auto;
+    background-color: #000000;
+    padding-top: 24px;
 }
-.header-inner:after {
-clear: both;
-content: "";
-display: table;
+.headerContent {
+    width: 1024px;
+    height: auto;
+    margin: 0 auto;
 }
-.header-inner {
-padding: 8px 10px 0;
-position: relative;
+.headerContent a img {
+    width: 400px;
+    height: 144px;
+    margin: 0px auto;
+    display: block;
 }
-.logo {
-background: url("Zeller.png") no-repeat scroll 0 0 / 100px 100px transparent;
-display: block;
-height: 500px;
-width: 700px;
+.nav {
+    margin-top: 20px;
+    height: 40px;
+    background: #a7e0ee;
 }
-.header-inner a {
-color: #959B9D;
+.nav ul {
+    margin: 0;
+    padding: 0;
 }
-
-.home-link {
-float: left;
-margin: -8px 5px 0 -10px;
-padding: 11px 15px;
+.nav ul li {
+    list-style: none;
+}
+.nav ul li a {
+    text-decoration: none;
+    float: left;
+    display: block;
+    padding: 10px 20px;
+    color: black;
+}
+.nav ul li a:hover {
+    color: white;
+}
+.headerBreak {
+    width: 100%;
+    height: 0;
+    border-bottom: 2px solid #a7e0ee;
 }
 </style>
 <body>
-    <div id="list">
-<ul>
-<li><a href="index.html">Home</a></li>
-<li><a href="page3.html">Map</a></li>
-<li><a href="page4.html">Roadhog</a></li>
-</ul>
+    <div class="header">
+        <div class="headerContent">
+            <a href="#">
+                <img src="McCree Logo.jpg" alt="Stellar Website Logo" title="Stellar Website Logo" />
+            </a>
+        <div class="nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="page2.html">Spaz</a></li>
+                <li><a href="page3.html">Map</a></li>
+                <li><a href="page4.html">Roadhog</a></li>
+            </ul>
+        </div>
+    </div>
 </div>
-    <div id="header">
-<div class="header-inner"> This here is the taskbar for this stellar website.
-<a class="home-link" href="Zeller.png"><span class="logo"></span></a>
-</div>
-</div>
-</div>
+<div class="parallax"></div>
+
+<div style="height:1200px;background-color:#000000;font-size:36px">
+    <p><br></p>
+    <table width="1000px" height="100px" border="1">
+<tr>
+<td>
+<img src="https://hydra-media.cursecdn.com/overwatch.gamepedia.com/thumb/0/08/Ability-mccree1.png/100px-Ability-mccree1.png?version=fb9bc6a6606ca65f7f0e336a5b14c25c" alt="Peacemaker" />
+</td>
+    <td><font color="white"> The Peacemaker</font></td>
+<td><font color="white">
+The Peacemaker is a single shot hitscan that does 21-70 damage per hit. The revolver holds 6 shots and can be shot twice every second.
+</font>
+</td>
+</tr>
+</table>
+<p><br></p>
+<table width="1000px" height="100px" border="1">
+<tr>
+<td>
+<img src="https://hydra-media.cursecdn.com/overwatch.gamepedia.com/thumb/0/08/Ability-mccree1.png/100px-Ability-mccree1.png?version=fb9bc6a6606ca65f7f0e336a5b14c25c" alt="Fan the Hammer" />
+</td>
+<td><font color="white"> Fan The Hammer</font></td>
+<td><font color="white">
+McCree can fan the Peacekeeper’s hammer that shoots 6 shots over .67 seconds. It does between 13.5 - 45 damage per hit.
+</font>
+</td>
+</tr>
+</table>
+<p><br></p>
+<table width="1000px" height="100px" border="1">
+<tr>
+<td>
+<img src="https://hydra-media.cursecdn.com/overwatch.gamepedia.com/thumb/9/9e/Ability-mccree2.png/100px-Ability-mccree2.png?version=8925e3125c44ae718ebadbdc8f672ffc" alt="Combat Roll" />
+</td>
+<td><font color="white"> Combat Roll</font></td>
+<td><font color="white">
+McCree dives in the direction he’s moving, effortlessly reloading his Peacekeeper in the process. He moves 6 meters over .5 seconds. This ability has a cooldown of 8 seconds.
+</font>
+</td>
+</tr>
+</table>
+<p><br></p>
+<table width="1000px" height="100px" border="1">
+<tr>
+<td>
+<img src="https://hydra-media.cursecdn.com/overwatch.gamepedia.com/thumb/1/18/Ability-mccree3.png/100px-Ability-mccree3.png?version=62d15bbc8466382aa6f2ba97b8cb189e" alt="Flashbang" />
+</td>
+<td><font color="white"> Flashbang</font></td>
+<td><font color="white">
+McCree throws a blinding grenade that explodes shortly after it leaves his hand. The blast stuns enemies in a radius of 2 meters and stuns them for .7 seconds. This ability has a cooldown of 10 seconds.
+</font>
+</td>
+</tr>
+</table>
+<p><br></p>
+<table width="1000px" height="100px" border="1">
+<tr>
+<td>
+<img src="https://hydra-media.cursecdn.com/overwatch.gamepedia.com/thumb/6/68/Ability-mccree4.png/100px-Ability-mccree4.png?version=afd0be156d03944e299da4a1dd88036e" alt="Deadeye" />
+</td>
+<td><font color="white"> Deadeye</font></td>
+<td><font color="white">
+Deadeye is the ultimate McCree possess. He builds up 250 damage over 1 second for enemies in his sight. While he is in this state, he is extremely vulnerable to attacks.
+</font>
+</td>
+</tr>
+</table>
+<p><br></p>
 </div>
 </body>
 </html>
