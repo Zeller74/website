@@ -6,9 +6,146 @@
 </head>
 <style>
 @charset "utf-8";
+@charset "utf-8";
+/* CSS Document */
+
+body{
+    margin: 0;
+    min-width: 980px;
+    padding: 0;
+}
+
+p{
+    margin: 0 0 20px 0;
+}
+
+p, ul{
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size-adjust:0.488;
+    font-weight:200;
+    font-style:normal;
+}
+
+img{
+    border: 0;
+    width: 100%;
+}
+
+h1, #pixels{
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size-adjust:0.40;
+    font-weight:700;
+    font-style:normal;
+}
+
+h2{
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size-adjust:0.531;
+    font-weight:500;
+    font-style:normal;
+}
+
+#header h1, #pixels{
+    color: #48941A;
+}
+
+.float-left{
+    float: left;
+    margin: 0 0 0 20px;
+}
+
+.float-right{
+    float: right;
+    margin: 0 20px 0 0;
+}
+
+.center{
+    font-size: 2.5em;
+    padding: 80px 0 0 0;
+    text-align: center;
+}
+
+#nav{
+    list-style: none;
+    position: fixed;
+    right: 20px;
+}
+
+#nav li{
+    margin: 0 0 15px 0;
+}
+
+#header, #intro, #second{
+    width: 100%;
+}
+
+#intro{
+    background:url(McCree2.jpg) 50% 0 no-repeat fixed;
+        background-size: cover;
+    color: white;
+    height: 1000px;
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+}
+
+#second{
+      background: url(McCree3.jpg) 50% 0 no-repeat fixed;
+        background-size: cover;
+    color: white;
+    height: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 0;
+    width: 100%;
+}
+
+#third{
+    background: url(McCree4.jpg) 50% 0 no-repeat fixed;
+      background-size: cover;
+  color: white;
+  height: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 0;
+  width: 100%;
+}
+#fourth{
+    background: url(McCree5.jpg) 50% 0 no-repeat fixed;
+      background-size: cover;
+  color: white;
+  height: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 0;
+  width: 100%;
+}
+#fifth{
+    background: url(McCree6.jpg) 50% 0 no-repeat fixed;
+      background-size: cover;
+  color: white;
+  height: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 0;
+  width: 100%;
+}
+
+.story{
+    margin: 0 auto;
+    min-width: 980px;
+    overflow: auto;
+    width: 980px;
+}
+
+.story .float-left, .story .float-right{
+    padding: 100px 0 0 0;
+    position: relative;
+    width: 350px;
+}
 .parallax {
     background-image: url("McCree.jpg");
-    min-height: 700px;
+    height: 700px;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -64,6 +201,7 @@ body {
 }
 </style>
 <body>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
     <div class="header">
         <div class="headerContent">
             <a href="#">
@@ -84,7 +222,7 @@ body {
 </div>
 <div class="parallax"></div>
 
-<div style="height:1200px;background-color:#000000;font-size:36px">
+<div style="height:4800px;background-color:#000000;font-size:36px">
     <p><br></p>
     <a name="Peacekeeper">
     <table width="1000px" height="100px" border="1">
@@ -100,6 +238,13 @@ The Peacemaker is a single shot hitscan that does 21-70 damage per hit. The revo
 </tr>
 </table>
 <p><br></p>
+<div id="intro">
+   <div class="story">
+      <div class="float-left">
+      </div>
+   </div>
+</div>
+<p><br></p>
 <a name="Fan the Hammer">
 <table width="1000px" height="100px" border="1">
 <tr>
@@ -113,6 +258,13 @@ McCree can fan the Peacekeeper’s hammer that shoots 6 shots over .67 seconds. 
 </td>
 </tr>
 </table>
+<p><br></p>
+<div id="second">
+   <div class="story">
+      <div class="float-right">
+      </div>
+   </div>
+</div>
 <p><br></p>
 <a name="Combat Roll">
 <table width="1000px" height="100px" border="1">
@@ -128,6 +280,13 @@ McCree dives in the direction he’s moving, effortlessly reloading his Peacekee
 </tr>
 </table>
 <p><br></p>
+<div id="third">
+   <div class="story">
+      <div class="float-left">
+   </div>
+</div>
+</div>
+<p><br></p>
 <a name="Flashbang">
 <table width="1000px" height="100px" border="1">
 <tr>
@@ -141,6 +300,13 @@ McCree throws a blinding grenade that explodes shortly after it leaves his hand.
 </td>
 </tr>
 </table>
+<p><br></p>
+<div id="fourth">
+   <div class="story">
+      <div class="float-left">
+   </div>
+</div>
+</div>
 <p><br></p>
 <a name="Deadeye">
 <table width="1000px" height="100px" border="1">
@@ -156,6 +322,12 @@ Deadeye is the ultimate McCree possesses. He builds up 250 damage over 1 second 
 </tr>
 </table>
 <p><br></p>
+<div id="fifth">
+   <div class="story">
+      <div class="float-left">
+   </div>
+</div>
+</div>
 </div>
 </body>
 </html>

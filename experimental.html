@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<style>
+@charset "utf-8";
+/* CSS Document */
+
+body{
+    margin: 0;
+    min-width: 980px;
+    padding: 0;
+}
+
+p{
+    margin: 0 0 20px 0;
+}
+
+p, ul{
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size-adjust:0.488;
+    font-weight:200;
+    font-style:normal;
+}
+
+img{
+    border: 0;
+    width: 100%;
+}
+
+h1, #pixels{
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size-adjust:0.40;
+    font-weight:700;
+    font-style:normal;
+}
+
+h2{
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size-adjust:0.531;
+    font-weight:500;
+    font-style:normal;
+}
+
+#header h1, #pixels{
+    color: #48941A;
+}
+
+.float-left{
+    float: left;
+    margin: 0 0 0 20px;
+}
+
+.float-right{
+    float: right;
+    margin: 0 20px 0 0;
+}
+
+.center{
+    font-size: 2.5em;
+    padding: 80px 0 0 0;
+    text-align: center;
+}
+
+#nav{
+    list-style: none;
+    position: fixed;
+    right: 20px;
+}
+
+#nav li{
+    margin: 0 0 15px 0;
+}
+
+#header, #intro, #second{
+    width: 100%;
+}
+
+#intro{
+    background:url(https://www.solodev.com/assets/parallax/work.jpg) 50% 0 no-repeat fixed;
+        background-size: cover;
+    color: white;
+    height: 600px;
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+}
+
+#second{
+      background: url(https://www.solodev.com/assets/parallax/secondBG.jpg) 50% 0 no-repeat fixed;
+        background-size: cover;
+    color: white;
+    height: 1300px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 0;
+    width: 100%;
+}
+
+#second .bg{
+      background: url(https://www.solodev.com/assets/parallax/trainers.png) 50% 0 no-repeat fixed;
+    height: 1300px;
+    margin: 0 auto;
+    padding: 0;
+    position: absolute;
+    z-index: 200;
+    max-width: 1900px;
+        width: 100%;
+    overflow: hidden;
+}
+
+#third{
+      background: url(https://www.solodev.com/assets/parallax/creative.jpg) 50% 0 no-repeat fixed;
+        background-size: cover;
+    color: black;
+    height: 650px;
+    padding: 100px 0 0 0;
+    width: 100%;
+    overflow: hidden;
+    padding: 0;
+}
+
+#fifth{
+    background: #ccc;
+    height: 400px;
+    margin: 0 auto;
+    padding: 40px 0 0 0;
+}
+
+.story{
+    margin: 0 auto;
+    min-width: 980px;
+    overflow: auto;
+    width: 980px;
+}
+
+.story .float-left, .story .float-right{
+    padding: 100px 0 0 0;
+    position: relative;
+    width: 350px;
+}
+</style>
+<body>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+<div id="intro">
+   <div class="story">
+      <div class="float-left">
+         <h2>The Way of the Future</h2>
+         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nibh erat, sagittis sit amet congue at, aliquam eu libero. Integer molestie, turpis vel ultrices facilisis, nisi mauris sollicitudin mauris, volutpat elementum enim urna eget odio.</p>
+      </div>
+   </div>
+   <!--.story-->
+</div>
+<!--#intro-->
+<div id="second">
+   <div class="story">
+      <div class="bg"></div>
+      <div class="float-right">
+         <h2>Fun with Multiple Backgrounds</h2>
+         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nibh erat, sagittis sit amet congue at, aliquam eu libero. Integer molestie, turpis vel ultrices facilisis, nisi mauris sollicitudin mauris, volutpat elementum enim urna eget odio.</p>
+         <p>Donec egestas aliquet facilisis. Nunc eu nunc eget neque ornare fringilla. Nam vel sodales lectus. Nulla in pellentesque eros. Donec ultricies, enim vitae varius cursus, risus mauris iaculis neque, euismod sollicitudin metus erat vitae sapien. Sed pulvinar.</p>
+      </div>
+   </div>
+   <!--.story-->
+</div>
+<!--#second-->
+<div id="third">
+   <div class="story">
+      <div class="float-left">
+         <h2>Why is Parallax so Awesome?</h2>
+         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nibh erat, sagittis sit amet congue at, aliquam eu libero. Integer molestie, turpis vel ultrices facilisis, nisi mauris sollicitudin mauris, volutpat elementum enim urna eget odio.</p>
+      </div>
+   </div>
+   <!--.story-->
+</div>
+<!--#third-->
+<script>
+$(document).ready(function(){
+	$('#nav').localScroll(800);
+
+	//.parallax(xPosition, speedFactor, outerHeight) options:
+	//xPosition - Horizontal position of the element
+	//inertia - speed to move relative to vertical scroll. Example: 0.1 is one tenth the speed of scrolling, 2 is twice the speed of scrolling
+	//outerHeight (true/false) - Whether or not jQuery should use it's outerHeight option to determine when a section is in the viewport
+	$('#intro').parallax("50%", 0.1);
+	$('#second').parallax("50%", 0.1);
+	$('.bg').parallax("50%", 0.4);
+	$('#third').parallax("50%", 0.3);
+
+})
+</script>
+</body>
+</html>
