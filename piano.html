@@ -1,989 +1,271 @@
 <!DOCTYPE html>
 <html>
-<style>
-@import url(reset.css);
-@import url(http://fonts.googleapis.com/css?family=Philosopher&subset=cyrillic,latin);
-
-html, body {
-	height: 100%;
-	font-family: Philosopher, Tahoma;
-  background-color: #F2F2F2;
-}
-
-body {
-		overflow-y: hidden;
-		padding-top: 20px;
-		width: 100%;
-}
-
-h1 {
-	font-size: 40px;
-}
-
-body.FogOfWar {
-  background-color: #0F0F0F;
-  position: fixed;
-  width: 100%:
-}
-body.pinkPanter {
-  background-color: #FFC0CB;
-}
-body.GoldernBrown {
-  background-color: #FFD700;
-}
-body.YellowSubmarine {
-  background-color: #E3DD6A;
-}
-body.SilverWings {
-	background-color: #C0C0C0;
-}
-
-a {text-decoration: none; color: #000; cursor: pointer;}
-a:hover {color: #9C0413;}
-
-nav.left {
-	position: fixed;
-	left: 0px;
-	margin: 0px 0px 0px 20px;
-}
-nav.right {
-	position: fixed;
-	right: 0px;
-	margin: 0px 20px 0px 0px;
-}
-
-#piano {
-    background-color: #272927;
-    color: #000000;
-    margin-left:  20px;
-		margin-right: 20px;
-    margin-top: -200px;
-    position: absolute;
-    text-align: center;
-    top: 350px;
-		width: 1530px;
-		padding: 10px 10px 13px;
-		display: block;
-}
-
-#pianoBody {
-	width: 100%;
-	position: relative;
-	float: left;
-	display: block;
-}
-
-#littleRedLine {
-    background-color: #9C0413;
-    color: #000000;
-    height: 5px;
-    position: absolute;
-    top: 1px;
-    width: 100%;
-    z-index: 100;
-		display: block;
-}
-
-.octave {
-	position: relative;
-	float: left;
-}
-
-.key {
-	cursor: pointer;
-}
-
-.white {
-	float: left;
-	width: 88px;
-	height: 460px;
-  background-color: #F4F4F4;
-  border: 1px solid #626262;
-  position: relative;
-	-moz-border-radius: 0 0 15px 15px;
-	border-radius: 0 0 15px 15px;
-	background-image: -webkit-gradient(center bottom , #FFFFFF 90%, #CCCCCC 100%);
-	-webkit-box-shadow: 0 -10px 2px 0px #838383 none, 0 -60px 40px 10px #EEEEEE inset;
-
-	background-image: -moz-linear-gradient(center bottom , #FFFFFF 90%, #CCCCCC 100%);
-	-moz-box-shadow: 0 -10px 2px 0px #838383 inset, 0 -60px 40px 10px #EEEEEE inset;
-
-	background-image: -gradient(center bottom , #FFFFFF 90%, #CCCCCC 100%);
-	box-shadow: 0 -10px 2px 0px #838383 inset, 0 -60px 40px 10px #EEEEEE inset;
-}
-
-div.white:active,
-div.white.pressed {
-  border: 1px solid #343434;
-	background-image: -webkit-gradient(center bottom , #FFFFFF 90%, #CCCCCC 100%);
-	-webkit-box-shadow: 0 -5px 20px -3px #272927 inset;
-
-	background-image: -moz-linear-gradient(center bottom , #FFFFFF 90%, #CCCCCC 100%);
-	-moz-box-shadow: 0 -5px 2px 0px #838383 inset,0 -3px 20px -3px #272927 inset;
-
-	background-image: -gradient(center bottom , #FFFFFF 90%, #CCCCCC 100%);
-	box-shadow: 0 -5px 20px -3px #272927 inset;
-}
-
-.black {
-	float: left;
-	width: 44px;
-	height: 320px;
-  background-color: #000000;
-  border-bottom: 2px solid #000;
-  border-left: 2px solid #000;
-  border-right: 2px solid #000;
-  position: absolute;
-  top: 6px;
-  z-index: 100;
-	-moz-border-radius: 0 0 5px 5px;
-	border-radius: 0 0 5px 5px;
-	border-top: 0px;
-	-moz-box-shadow: 0 -9px 10px 9px #303030 inset, 0 -15px #F7F7F7 inset;
-	-webkit-box-shadow: 0 -9px 10px 9px #303030 inset, 0 -15px #F7F7F7 inset;
-	box-shadow: 0 -9px 10px 9px #303030 inset, 0 -15px #F7F7F7 inset;
-}
-
-div.black:active,
-div.black.pressed {
-  border: 1px solid #CECECE;
-  border-top: 1px solid #626262;
-	-moz-box-shadow: 0 0 6px 7px #303030 inset, 0 -5px #F7F7F7 inset;
-	-webkit-box-shadow: 0 0 6px 7px #303030 inset, 0 -5px #F7F7F7 inset;
-	box-shadow: 0 0 6px 7px #303030 inset, 0 -5px #F7F7F7 inset;
-}
-
-div.flats {
-
-}
-
-div.flats :nth-child(1) {
-	margin-left: 67px;
-}
-div.flats :nth-child(2) {
-	margin-left: 157px;
-}
-div.flats :nth-child(3) {
-	margin-left: 338px;
-}
-div.flats :nth-child(4) {
-	margin-left: 428px;
-}
-div.flats :nth-child(5) {
-	margin-left: 517px;
-}
-
-
-#toggleKeyNames,
-#toggleKeyboardKeysNames {
-	font-size: 24px;
-	font-weight: bold;
-	text-decoration: none;
-	cursor: pointer;
-	display: block;
-}
-#toggleKeyNames.on {
-	color: #ff9000;
-	text-shadow: 1px 1px 0 #7E6D1F;
-}
-#toggleKeyboardKeysNames.on {
-	color: #9C0413;
-	text-shadow: 1px 1px 0 #B31706;
-}
-
-.keyname,
-.kbkeyname {
-    font-size: 4em;
-    margin: 382px 1px 0 0;
-}
-
-.white .keyname {
-	color: #ff9000;
-	text-shadow: 2px 2px 0 #7E6D1F;
-}
-.white .kbkeyname {
-	color: #9C0413;
-	text-shadow: 2px 2px 0 #B31706;
-}
-.black .keyname {
-  font-size: 1.6em;
-	margin: 233px 0 0 0;
-	color: #ff9000;
-	text-shadow: 1px 1px 0 #7E6D1F;
-}
-
-.black .kbkeyname {
-  font-size: 1.6em;
-	margin: 233px 0 0 0;
-	color: #9C0413;
-	text-shadow: 1px 1px 0 #B31706;
-}
-
-div.black div.keyname,
-div.black div.kbkeyname {
-	margin-left: 0px;
-}
-
-#Volume {
-
-}
-
-#switchLight.off {
-	color: #fff;
-}
-
-#pianoStrings {
-	position: fixed;
-	bottom: 10px;
-	left: 20px;
-	display: none;
-}
-
-.oN {
-    bottom: 75px;
-    font-size: 3em;
-    left: 32px;
-    margin: 0 0 0 0;
-    position: absolute;
-    display: none;
-}
-
-footer {
-    top: 650px;
-    font-family: Tahoma;
-    font-size: 11px;
-    padding: 10px 0;
-    position: fixed;
-    width: 100%;
-}
-.bunchOfLinks {
-	float: left;
-	margin-left: 20px;
-}
-.signiture {
-	float: right;
-	margin-right: 120px;
-}
-
-#socialBox {
-  float: left;
-  margin-left: 20px;
-}
-
-#socialBox h5 {
-	margin-left: 10px;
-}
-</style>
-<head>
-  <meta charset="utf-8">
-  <title>Piano</title>
-
-	<meta name="rating" content="General" />
-	<meta name="author" content="Mihail Ilinov - more at http://mihail.ilinov.eu/"/>
-	<meta name="owner" content="Mihail Ilinov" />
-	<meta name="copyright" content="Mihail Ilinov" />
-	<meta name="cache-control" content="no-cache" />
-
-	<meta http-equiv="X-UA-Compatible" content="chrome=1">
-	<meta name="robots" content="index,follow" />
-	<meta name="revisit-after" content="1 days" />
-	<meta name="msnbot" content="index,follow" />
-	<meta name="googlebot" content="revisit-after 1 day" />
-	<meta name="area" content="Web HTML5 Experimental Piano Audio">
-
-	<meta name="allow-search" content="yes">
-	<meta name="subject" content="HTML5 Piano">
-	<meta name="abstract" content="HTML5 Piano">
-
-	<meta name="country" content="Bulgaria">
-	<meta name="creation date" content="February 2011"/>
-	<meta name="catalogue" content="Mihail Ilinov pages">
-	<meta name="description" content="HTML5 Piano is free web application developed with HTML5, CSS3 and JavaScript. HTML5 Piano is experimental project with one main goal - fun of playing piano on the web and testing the browsers performance. HTML5 Piano is free to use and fork. " />
-
-	<meta name="keywords" content="HTML5 Piano, html piano, css3 piano, html css3 piano, web piano, free web piano, free piano, javascript piano, audio tag, html audio, jquery piano">
-  <script src="https://www.google.com/jsapi?key=ABQIAAAAM5WRXPMrqYvX6b4Xb7EZpxSeEWdgYc2hJ2roZCm3pKElCbTU5BSm-LvChjUku9yw6i8tI0Srj_P91w" type="text/javascript"></script>
-  <script type="text/javascript">
-  	google.load("jquery", "1.5.0");
-	</script>
-  <script>(function(jQuery){
-
-	jQuery.hotkeys = {
-		version: "0.8",
-
-		specialKeys: {
-			8: "backspace", 9: "tab", 13: "return", 16: "shift", 17: "ctrl", 18: "alt", 19: "pause",
-			20: "capslock", 27: "esc", 32: "space", 33: "pageup", 34: "pagedown", 35: "end", 36: "home",
-			37: "left", 38: "up", 39: "right", 40: "down", 45: "insert", 46: "del",
-			96: "0", 97: "1", 98: "2", 99: "3", 100: "4", 101: "5", 102: "6", 103: "7",
-			104: "8", 105: "9", 106: "*", 107: "+", 109: "-", 110: ".", 111 : "/",
-			112: "f1", 113: "f2", 114: "f3", 115: "f4", 116: "f5", 117: "f6", 118: "f7", 119: "f8",
-			120: "f9", 121: "f10", 122: "f11", 123: "f12", 144: "numlock", 145: "scroll", 191: "/", 224: "meta", 188:",", 190:".",
-		},
-
-		shiftNums: {
-			"`": "~", "1": "!", "2": "@", "3": "#", "4": "$", "5": "%", "6": "^", "7": "&",
-			"8": "*", "9": "(", "0": ")", "-": "_", "=": "+", ";": ": ", "'": "\"", ",": "<",
-			".": ">",  "/": "?",  "\\": "|"
-		}
-	};
-
-	function keyHandler( handleObj ) {
-		// Only care when a possible input has been specified
-
-		//check for object
-		if (typeof handleObj.data == "object") {
-
-			//mike add and changefor my case
-			//set the needed string data as new string variable stringData
-			stringData = handleObj.data.kbKey;
-			//alert(stringData);
-		} else {
-
-			//check for string and exit if not
-			if ( typeof handleObj.data !== "string" ) {
-				return;
-			}
-			stringData = handleObj.data;
-		}
-
-
-		//alert(handleObj.data);
-		//return;
-
-		var origHandler = handleObj.handler,
-			keys = stringData.toLowerCase().split(" ");
-
-		handleObj.handler = function( event ) {
-			// Don't fire in text-accepting inputs that we didn't directly bind to
-			if ( this !== event.target && (/textarea|select/i.test( event.target.nodeName ) ||
-				 event.target.type === "text") ) {
-				return;
-			}
-
-			// Keypress represents characters, not special keys
-			var special = event.type !== "keypress" && jQuery.hotkeys.specialKeys[ event.which ],
-				character = String.fromCharCode( event.which ).toLowerCase(),
-				key, modif = "", possible = {};
-
-			// check combinations (alt|ctrl|shift+anything)
-			if ( event.altKey && special !== "alt" ) {
-				modif += "alt+";
-			}
-
-			if ( event.ctrlKey && special !== "ctrl" ) {
-				modif += "ctrl+";
-			}
-
-			// TODO: Need to make sure this works consistently across platforms
-			if ( event.metaKey && !event.ctrlKey && special !== "meta" ) {
-				modif += "meta+";
-			}
-
-			if ( event.shiftKey && special !== "shift" ) {
-				modif += "shift+";
-			}
-
-			if ( special ) {
-				possible[ modif + special ] = true;
-
-			} else {
-				possible[ modif + character ] = true;
-				possible[ modif + jQuery.hotkeys.shiftNums[ character ] ] = true;
-
-				// "$" can be triggered as "Shift+4" or "Shift+$" or just "$"
-				if ( modif === "shift+" ) {
-					possible[ jQuery.hotkeys.shiftNums[ character ] ] = true;
-				}
-			}
-
-			for ( var i = 0, l = keys.length; i < l; i++ ) {
-				if ( possible[ keys[i] ] ) {
-					return origHandler.apply( this, arguments );
-				}
-			}
-		};
-	}
-
-	jQuery.each([ "keydown", "keyup", "keypress" ], function() {
-		jQuery.event.special[ this ] = { add: keyHandler };
-	});
-
-})( jQuery );</script>
-  <script>pKey0 = new Object;
-pKey0.kbKey = 'z';
-pKey0.flag = true;
-pKey0.value = '#1A';
-pKey0.sound = 'tone-1A';
-
-pKey1 = new Object;
-pKey1.kbKey = 's';
-pKey1.flag = true;
-pKey1.value = '#1As';
-pKey1.sound = 'tone-1As';
-
-pKey2 = new Object;
-pKey2.kbKey = 'x';
-pKey2.flag = true;
-pKey2.value = '#1B';
-pKey2.sound = 'tone-1B';
-
-pKey3 = new Object;
-pKey3.kbKey = 'c';
-pKey3.flag = true;
-pKey3.value = '#2C';
-pKey3.sound = 'tone-2C';
-
-pKey4 = new Object;
-pKey4.kbKey = 'f';
-pKey4.flag = true;
-pKey4.value = '#2Cs';
-pKey4.sound = 'tone-2Cs';
-
-pKey5 = new Object;
-pKey5.kbKey = 'v';
-pKey5.flag = true;
-pKey5.value = '#2D';
-pKey5.sound = 'tone-2D';
-
-pKey6 = new Object;
-pKey6.kbKey = 'g';
-pKey6.flag = true;
-pKey6.value = '#2Ds';
-pKey6.sound = 'tone-2Ds';
-
-pKey7 = new Object;
-pKey7.kbKey = 'b';
-pKey7.flag = true;
-pKey7.value = '#2E';
-pKey7.sound = 'tone-2E';
-
-pKey8 = new Object;
-pKey8.kbKey = 'n';
-pKey8.flag = true;
-pKey8.value = '#2F';
-pKey8.sound = 'tone-2F';
-
-pKey9 = new Object;
-pKey9.kbKey = 'j';
-pKey9.flag = true;
-pKey9.value = '#2Fs';
-pKey9.sound = 'tone-2Fs';
-
-pKey10 = new Object;
-pKey10.kbKey = 'm';
-pKey10.flag = true;
-pKey10.value = '#2G';
-pKey10.sound = 'tone-2G';
-
-pKey11 = new Object;
-pKey11.kbKey = 'k 1';
-pKey11.flag = true;
-pKey11.value = '#2Gs';
-pKey11.sound = 'tone-2Gs';
-
-pKey12 = new Object;
-pKey12.kbKey = ', q';
-pKey12.flag = true;
-pKey12.value = '#2A';
-pKey12.sound = 'tone-2A';
-
-pKey13 = new Object;
-pKey13.kbKey = 'l 2';
-pKey13.flag = true;
-pKey13.value = '#2As';
-pKey13.sound = 'tone-2As';
-
-pKey14 = new Object;
-pKey14.kbKey = '. w';
-pKey14.flag = true;
-pKey14.value = '#2B';
-pKey14.sound = 'tone-2B';
-
-pKey15 = new Object;
-pKey15.kbKey = 'e';
-pKey15.flag = true;
-pKey15.value = '#3C';
-pKey15.sound = 'tone-3C';
-
-pKey16 = new Object;
-pKey16.kbKey = '4';
-pKey16.flag = true;
-pKey16.value = '#3Cs';
-pKey16.sound = 'tone-3Cs';
-
-pKey17 = new Object;
-pKey17.kbKey = 'r';
-pKey17.flag = true;
-pKey17.value = '#3D';
-pKey17.sound = 'tone-3D';
-
-pKey18 = new Object;
-pKey18.kbKey = '5';
-pKey18.flag = true;
-pKey18.value = '#3Ds';
-pKey18.sound = 'tone-3Ds';
-
-pKey19 = new Object;
-pKey19.kbKey = 't';
-pKey19.flag = true;
-pKey19.value = '#3E';
-pKey19.sound = 'tone-3E';
-
-pKey20 = new Object;
-pKey20.kbKey = 'y';
-pKey20.flag = true;
-pKey20.value = '#3F';
-pKey20.sound = 'tone-3F';
-
-pKey21 = new Object;
-pKey21.kbKey = '7';
-pKey21.flag = true;
-pKey21.value = '#3Fs';
-pKey21.sound = 'tone-3Fs';
-
-pKey22 = new Object;
-pKey22.kbKey = 'u';
-pKey22.flag = true;
-pKey22.value = '#3G';
-pKey22.sound = 'tone-3G';
-
-pKey23 = new Object;
-pKey23.kbKey = '8';
-pKey23.flag = true;
-pKey23.value = '#3Gs';
-pKey23.sound = 'tone-3Gs';
-
-pKey24 = new Object;
-pKey24.kbKey = 'i';
-pKey24.flag = true;
-pKey24.value = '#3A';
-pKey24.sound = 'tone-3A';
-
-pKey25 = new Object;
-pKey25.kbKey = '9';
-pKey25.flag = true;
-pKey25.value = '#3As';
-pKey25.sound = 'tone-3As';
-
-pKey26 = new Object;
-pKey26.kbKey = 'o';
-pKey26.flag = true;
-pKey26.value = '#3B';
-pKey26.sound = 'tone-3B';
-
-pKey27 = new Object;
-pKey27.kbKey = 'p';
-pKey27.flag = true;
-pKey27.value = '#4C';
-pKey27.sound = 'tone-4C'; </script>
-  <script>var PIANO_KEYS = 28;
-
-$(document).ready(function() {
-
-	$(".white").mousedown(function () {
-	  	toneId = $(this).attr('id');
-			play_multi_sound('tone-'+toneId);
-	 });
-
-	$(".white").mouseup(function () {
-	  	toneId = $(this).attr('id');
-			//stop_multi_sound('tone-'+toneId, 'mouse');
-	 });
-
-	$(".black").mousedown(function () {
-	  	toneId = $(this).attr('id');
-			play_multi_sound('tone-'+toneId);
-	 });
-
-	$(".black").mouseup(function () {
-	  	toneId = $(this).attr('id');
-			stop_multi_sound('tone-'+toneId, 'mouse');
-	 });
-
- 	//Toggles and other stuffs
-	$("#piano div.keyname").hide();
-	$("#piano div.kbkeyname").hide();
-
-	$("#toggleKeyNames").click(function () {
-		$("#piano div.kbkeyname").hide();
-		$("#toggleKeyboardKeysNames").removeClass('on');
-		$("#piano div.keyname").toggle();
-		$(this).toggleClass('on');
-	 });
-
-	$("#toggleKeyboardKeysNames").click(function () {
-		$("#piano div.keyname").hide();
-		$("#toggleKeyNames").removeClass('on');
-		$("#piano div.kbkeyname").toggle();
-		$(this).toggleClass('on');
-	 });
-
-	$("#Octaves").click(function () {
-		$("#piano div.oN").toggle();
-		$(this).toggleClass('on');
-	 });
-
-	$("#Strings").click(function () {
-		$("#pianoStrings").toggle();
-		$(this).toggleClass('on');
-	 });
-
-	$("#switchLight").click(function () {
-		$('body').toggleClass('FogOfWar');
-		$('html').toggleClass('FogOfWar');
-		$(this).toggleClass('off');
-	 });
-
-	$("div.pickColor").click(function () {
-	  var color = $(this).css("background-color");
-		$('body').toggleClass('FogOfWar');
-	});
-
-
-})
-
-
-//ARRAY WITH ALL THE KEYS
-//the array content starts from element 1 so eleemnt 0 i zero, empty, nada, 0 gree
-var keyboardKeys = new Array (PIANO_KEYS);
-var k;
-
-for (k=0;k < PIANO_KEYS; k++) {
-	keyboardKeys[k] = eval("pKey"+k);
-	//console.log(keyboardKeys[k]);
-}
-
-//LOOP trought all the  keyboard-piano keys
-for (i=0; i <keyboardKeys.length; i++) {
-
-
-		//BIND ON KEY DOWN
-		$(document).bind('keydown', keyboardKeys[i], function (evt){
-
-			//console.log("obajdam se ot funkciqta vutre " + evt.data.value +  evt.data.flag + evt.data.sound);
-
-			//check the flag false - key is down, true - key is up
-			if(evt.data.flag) {
-			 evt.data.flag = false;
-			 $(evt.data.value).addClass('pressed');
-			 play_multi_sound(evt.data.sound);
-			}
-
-			return false;
-		});
-
-
-//$(document).bind('keydown', 'r',function (evt){ alert('adasd'); });
-
-		//BIND ON KEY UP
-		$(document).bind('keyup', keyboardKeys[i], function (evt){
-
-			//console.log("obajdame se ot funkciqta vutre " + evt.data.value +  evt.data.flag + evt.data.sound);
-
-			//check the flag false - key is down, true - key is up
-			evt.data.flag = true;
-			$(evt.data.value).removeClass('pressed');
-			//stop_multi_sound(evt.data.sound); //don't so cool as shoud
-
-			return false;
-
-		});
-
-}
-
-var channel_max = 32;										// number of channels
-audiochannels = new Array();
-
-for (a=0;a<channel_max;a++) {									// prepare the channels
-	audiochannels[a] = new Array();
-	audiochannels[a]['channel'] = new Audio();						// create a new audio object
-	audiochannels[a]['finished'] = -1;							// expected end time for this channel
-	audiochannels[a]['keyvalue'] = '';
-}
-
-
-//PLAY SOUND
-function play_multi_sound(s) {
-
-
-	for (a=0;a <audiochannels.length; a++) {
-		thistime = new Date();
-		if (audiochannels[a]['finished'] < thistime.getTime()) {			// is this channel finished?
-
-			//console.log(audiochannels[a]['keyvalue']);
-
-			try
-		  {
-					audiochannels[a]['finished'] = thistime.getTime() + document.getElementById(s).duration*1000;
-					audiochannels[a]['channel'] = document.getElementById(s);
-					audiochannels[a]['channel'].currentTime = 0;
-					audiochannels[a]['channel'].volume=1;
-					audiochannels[a]['channel'].play();
-					audiochannels[a]['keyvalue'] = s;
-
-					//console.log("the key is pressed - play");
-
-					//console.log(audiochannels[a]['keyvalue']);
-
-		  }
-		  catch(v)
-		  {
-		  	//show the error message (alert or log) or hide it when public
-		    //alert(v.message);
-		   //	console.log(v.message);
-		  }
-
-			break;
-		}
-	}
-}
-
-
-function stop_multi_sound(s, sender) {
-
-	for (a=0;a <audiochannels.length; a++) {
-
-		//console.log('chanel keyvalue = '+audiochannels[a]['keyvalue']);
-
-		if (audiochannels[a]['keyvalue'] == s) {			// is this channel finished?
-
-			try
-		  {
-					audiochannels[a]['channel'] = document.getElementById(s);
-
-					//audiochannels[a]['channel'].currentTime =  audiochannels[a]['channel'].duration;
-					//audiochannels[a]['keyvalue'] = 'nema';
-
-					if(sender != undefined && sender == 'mouse') {
-						setTimeout ("audiochannels[a]['channel'].pause()", 2500 );
-						setTimeout ("audiochannels[a]['channel'].currentTime = 0", 2500 );
-					}else {
-						//audiochannels[a]['channel'].volume=0;
-						setTimeout ("audiochannels[a]['channel'].pause()", 2500 );
-						setTimeout ("audiochannels[a]['channel'].currentTime = 0", 2500 );
-					}
-
-					//console.log("the key is UP - stop sound " + s + ' = ' + audiochannels[a]['channel'].duration + '== ' + audiochannels[a]['channel'].currentTime);
-					//console.log(audiochannels[a]['keyvalue']);
-		  }
-		  catch(v)
-		  {
-		  	//show the error message (alert or log) or hide it when public
-		    //alert(v.message);
-		   	console.log(v.message);
-		  }
-
-			break;
-		}
-	}
-}
-
-$.scrollTo($('a#middleC'));
-	 </script>
-</head>
 <body>
-	<nav class="left">
-		<h1>Piano</h1>
-	</nav>
-	<nav class="right">
-	</nav>
-	<div id="piano">
-		<div id="pianoBody">
-			<div id="littleRedLine"></div>
-			<div id="o1" class="octave">
-				<div id="1A" class="key white"><div class="keyname">A</div><div class="kbkeyname">Z</div></div>
-				<div id="1B" class="key white"><div class="keyname">B</div><div class="kbkeyname">X</div></div>
-				<div class="flats">
-					<div id="1As" class="key black"><div class="keyname">A# == Bb</div><div class="kbkeyname">S</div></div>
-				</div>
-			</div>
-			<div id="o2" class="octave">
-				<div id="2C" class="key white" ><div class="keyname">C</div><div class="kbkeyname">C</div><div class="oN">3</div></div>
-				<div id="2D" class="key white"><div class="keyname">D</div><div class="kbkeyname">V</div></div>
-				<div id="2E" class="key white"><div class="keyname">E</div><div class="kbkeyname">B</div></div>
-				<div id="2F" class="key white"><div class="keyname">F</div><div class="kbkeyname">N</div></div>
-				<div id="2G" class="key white"><div class="keyname">G</div><div class="kbkeyname">M</div></div>
-				<div id="2A" class="key white"><div class="keyname">A</div><div class="kbkeyname">,</div></div>
-				<div id="2B" class="key white"><div class="keyname">B</div><div class="kbkeyname">.</div></div>
-				<div class="flats">
-					<div id="2Cs" class="key black"><div class="keyname">C# == Db</div><div class="kbkeyname">F</div></div>
-					<div id="2Ds" class="key black"><div class="keyname">D# == Eb</div><div class="kbkeyname">G</div></div>
-					<div id="2Fs" class="key black"><div class="keyname">F# == Gb</div><div class="kbkeyname">J</div></div>
-					<div id="2Gs" class="key black"><div class="keyname">G# == Ab</div><div class="kbkeyname">K</div></div>
-					<div id="2As" class="key black"><div class="keyname">A# == Bb</div><div class="kbkeyname">L</div></div>
-				</div>
-			</div>
-			<div id="o3" class="octave">
-				<div id="3C" class="key white" ><div class="keyname">C</div><div class="kbkeyname">E</div><div class="oN">4</div></div>
-				<div id="3D" class="key white"><div class="keyname">D</div><div class="kbkeyname">R</div></div>
-				<div id="3E" class="key white"><div class="keyname">E</div><div class="kbkeyname">T</div></div>
-				<div id="3F" class="key white"><div class="keyname">F</div><div class="kbkeyname">Y</div></div>
-				<div id="3G" class="key white"><div class="keyname">G</div><div class="kbkeyname">U</div></div>
-				<div id="3A" class="key white"><div class="keyname">A</div><div class="kbkeyname">I</div></div>
-				<div id="3B" class="key white"><div class="keyname">B</div><div class="kbkeyname">O</div></div>
-				<div class="flats">
-					<div id="3Cs" class="key black"><div class="keyname">C# == Db</div><div class="kbkeyname">4</div></div>
-					<div id="3Ds" class="key black"><div class="keyname">D# == Eb</div><div class="kbkeyname">5</div></div>
-					<div id="3Fs" class="key black"><div class="keyname">F# == Gb</div><div class="kbkeyname">7</div></div>
-					<div id="3Gs" class="key black"><div class="keyname">G# == Ab</div><div class="kbkeyname">8</div></div>
-					<div id="3As" class="key black"><div class="keyname">A# == Bb</div><div class="kbkeyname">9</div></div>
-				</div>
-			</div>
-			<div id="o4" class="octave">
-				<div id="4C" class="key white" ><div class="keyname">C</div><div class="kbkeyname">P</div><div class="oN">5</div></div>
-			</div>
-		</div>
-	</div>
-	<!-- AudioFiles Section http://78.90.42.244/HTMLPiano/tones/grand-piano/ -->
-	<div id="pianoStrings">
-		<audio id="tone-1A" preload="auto" controls>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/1A.ogg" type="audio/ogg"></source>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/1A.mp3" type="audio/mpeg"></source>
-		</audio>
-		<audio id="tone-1As" preload="auto" controls>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/1As.ogg" type="audio/ogg"></source>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/1As.mp3" type="audio/mpeg"></source>
-		</audio>
-		<audio id="tone-1B" preload="auto" controls>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/1B.ogg" type="audio/ogg"></source>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/1B.mp3" type="audio/mpeg"></source>
-		</audio>
-		<audio id="tone-2C" preload="auto" controls>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2C.ogg" type="audio/ogg"></source>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2C.mp3" type="audio/mpeg"></source>
-		</audio>
-		<audio id="tone-2Cs" preload="auto" controls>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2Cs.ogg" type="audio/ogg"></source>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2Cs.mp3" type="audio/mpeg"></source>
-		</audio>
-		<audio id="tone-2D" preload="auto" controls>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2D.ogg" type="audio/ogg"></source>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2D.mp3" type="audio/mpeg"></source>
-		</audio>
-		<audio id="tone-2Ds" preload="auto" controls>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2Ds.ogg" type="audio/ogg"></source>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2Ds.mp3" type="audio/mpeg"></source>
-		</audio>
-		<audio id="tone-2E" preload="auto" controls>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2E.ogg" type="audio/ogg"></source>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2E.mp3" type="audio/mpeg"></source>
-		</audio>
-		<audio id="tone-2F" preload="auto" controls>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2F.ogg" type="audio/ogg"></source>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2F.mp3" type="audio/mpeg"></source>
-		</audio>
-		<audio id="tone-2Fs" preload="auto" controls>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2Fs.ogg" type="audio/ogg"></source>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2Fs.mp3" type="audio/mpeg"></source>
-		</audio>
-		<audio id="tone-2G" preload="auto" controls>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2G.ogg" type="audio/ogg"></source>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2G.mp3" type="audio/mpeg"></source>
-		</audio>
-		<audio id="tone-2Gs" preload="auto" controls>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2Gs.ogg" type="audio/ogg"></source>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2Gs.mp3" type="audio/mpeg"></source>
-		</audio>
-		<audio id="tone-2A" preload="auto" controls>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2A.ogg" type="audio/ogg"></source>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2A.mp3" type="audio/mpeg"></source>
-		</audio>
-		<audio id="tone-2As" preload="auto" controls>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2As.ogg" type="audio/ogg"></source>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2As.mp3" type="audio/mpeg"></source>
-		</audio>
-		<audio id="tone-2B" preload="auto" controls>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2B.ogg" type="audio/ogg"></source>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2B.mp3" type="audio/mpeg"></source>
-		</audio>
-		<audio id="tone-3C" preload="auto" controls>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3C.ogg" type="audio/ogg"></source>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3C.mp3" type="audio/mpeg"></source>
-		</audio>
-		<audio id="tone-3C" preload="auto" controls>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3C.ogg" type="audio/ogg"></source>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3C.mp3" type="audio/mpeg"></source>
-		</audio>
-		<audio id="tone-3Cs" preload="auto" controls>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3Cs.ogg" type="audio/ogg"></source>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3Cs.mp3" type="audio/mpeg"></source>
-		</audio>
-		<audio id="tone-3D" preload="auto" controls>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3D.ogg" type="audio/ogg"></source>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3D.mp3" type="audio/mpeg"></source>
-		</audio>
-		<audio id="tone-3Ds" preload="auto" controls>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3Ds.ogg" type="audio/ogg"></source>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3Ds.mp3" type="audio/mpeg"></source>
-		</audio>
-		<audio id="tone-3E" preload="auto" controls>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3E.ogg" type="audio/ogg"></source>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3E.mp3" type="audio/mpeg"></source>
-		</audio>
-		<audio id="tone-3F" preload="auto" controls>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3F.ogg" type="audio/ogg"></source>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3F.mp3" type="audio/mpeg"></source>
-		</audio>
-		<audio id="tone-3Fs" preload="auto" controls>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3Fs.ogg" type="audio/ogg"></source>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3Fs.mp3" type="audio/mpeg"></source>
-		</audio>
-		<audio id="tone-3G" preload="auto" controls>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3G.ogg" type="audio/ogg"></source>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3G.mp3" type="audio/mpeg"></source>
-		</audio>
-		<audio id="tone-3Gs" preload="auto" controls>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3Gs.ogg" type="audio/ogg"></source>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3Gs.mp3" type="audio/mpeg"></source>
-		</audio>
-		<audio id="tone-3A" preload="auto" controls>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3A.ogg" type="audio/ogg"></source>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3A.mp3" type="audio/mpeg"></source>
-		</audio>
-		<audio id="tone-3As" preload="auto" controls>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3As.ogg" type="audio/ogg"></source>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3As.mp3" type="audio/mpeg"></source>
-		</audio>
-		<audio id="tone-3B" preload="auto" controls>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3B.ogg" type="audio/ogg"></source>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3B.mp3" type="audio/mpeg"></source>
-		</audio>
-		<audio id="tone-4C" preload="auto" controls>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/4C.ogg" type="audio/ogg"></source>
-			<source src="http://pianosounds.pixelass.com/tones/grand-piano/4C.mp3" type="audio/mpeg"></source>
-		</audio>
-	</div>
+    <audio id="tone-1A" preload="auto" controls>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/1A.ogg" type="audio/ogg"></source>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/1A.mp3" type="audio/mpeg"></source>
+    		</audio>
+    		<audio id="tone-1As" preload="auto" controls>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/1As.ogg" type="audio/ogg"></source>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/1As.mp3" type="audio/mpeg"></source>
+    		</audio>
+    		<audio id="tone-1B" preload="auto" controls>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/1B.ogg" type="audio/ogg"></source>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/1B.mp3" type="audio/mpeg"></source>
+    		</audio>
+    		<audio id="tone-2C" preload="auto" controls>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2C.ogg" type="audio/ogg"></source>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2C.mp3" type="audio/mpeg"></source>
+    		</audio>
+    		<audio id="tone-2Cs" preload="auto" controls>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2Cs.ogg" type="audio/ogg"></source>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2Cs.mp3" type="audio/mpeg"></source>
+    		</audio>
+    		<audio id="tone-2D" preload="auto" controls>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2D.ogg" type="audio/ogg"></source>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2D.mp3" type="audio/mpeg"></source>
+    		</audio>
+    		<audio id="tone-2Ds" preload="auto" controls>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2Ds.ogg" type="audio/ogg"></source>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2Ds.mp3" type="audio/mpeg"></source>
+    		</audio>
+    		<audio id="tone-2E" preload="auto" controls>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2E.ogg" type="audio/ogg"></source>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2E.mp3" type="audio/mpeg"></source>
+    		</audio>
+    		<audio id="tone-2F" preload="auto" controls>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2F.ogg" type="audio/ogg"></source>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2F.mp3" type="audio/mpeg"></source>
+    		</audio>
+    		<audio id="tone-2Fs" preload="auto" controls>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2Fs.ogg" type="audio/ogg"></source>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2Fs.mp3" type="audio/mpeg"></source>
+    		</audio>
+    		<audio id="tone-2G" preload="auto" controls>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2G.ogg" type="audio/ogg"></source>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2G.mp3" type="audio/mpeg"></source>
+    		</audio>
+    		<audio id="tone-2Gs" preload="auto" controls>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2Gs.ogg" type="audio/ogg"></source>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2Gs.mp3" type="audio/mpeg"></source>
+    		</audio>
+    		<audio id="tone-2A" preload="auto" controls>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2A.ogg" type="audio/ogg"></source>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2A.mp3" type="audio/mpeg"></source>
+    		</audio>
+    		<audio id="tone-2As" preload="auto" controls>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2As.ogg" type="audio/ogg"></source>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2As.mp3" type="audio/mpeg"></source>
+    		</audio>
+    		<audio id="tone-2B" preload="auto" controls>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2B.ogg" type="audio/ogg"></source>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/2B.mp3" type="audio/mpeg"></source>
+    		</audio>
+    		<audio id="tone-3C" preload="auto" controls>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3C.ogg" type="audio/ogg"></source>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3C.mp3" type="audio/mpeg"></source>
+    		</audio>
+    		<audio id="tone-3C" preload="auto" controls>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3C.ogg" type="audio/ogg"></source>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3C.mp3" type="audio/mpeg"></source>
+    		</audio>
+    		<audio id="tone-3Cs" preload="auto" controls>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3Cs.ogg" type="audio/ogg"></source>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3Cs.mp3" type="audio/mpeg"></source>
+    		</audio>
+    		<audio id="tone-3D" preload="auto" controls>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3D.ogg" type="audio/ogg"></source>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3D.mp3" type="audio/mpeg"></source>
+    		</audio>
+    		<audio id="tone-3Ds" preload="auto" controls>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3Ds.ogg" type="audio/ogg"></source>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3Ds.mp3" type="audio/mpeg"></source>
+    		</audio>
+    		<audio id="tone-3E" preload="auto" controls>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3E.ogg" type="audio/ogg"></source>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3E.mp3" type="audio/mpeg"></source>
+    		</audio>
+    		<audio id="tone-3F" preload="auto" controls>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3F.ogg" type="audio/ogg"></source>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3F.mp3" type="audio/mpeg"></source>
+    		</audio>
+    		<audio id="tone-3Fs" preload="auto" controls>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3Fs.ogg" type="audio/ogg"></source>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3Fs.mp3" type="audio/mpeg"></source>
+    		</audio>
+    		<audio id="tone-3G" preload="auto" controls>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3G.ogg" type="audio/ogg"></source>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3G.mp3" type="audio/mpeg"></source>
+    		</audio>
+    		<audio id="tone-3Gs" preload="auto" controls>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3Gs.ogg" type="audio/ogg"></source>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3Gs.mp3" type="audio/mpeg"></source>
+    		</audio>
+    		<audio id="tone-3A" preload="auto" controls>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3A.ogg" type="audio/ogg"></source>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3A.mp3" type="audio/mpeg"></source>
+    		</audio>
+    		<audio id="tone-3As" preload="auto" controls>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3As.ogg" type="audio/ogg"></source>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3As.mp3" type="audio/mpeg"></source>
+    		</audio>
+    		<audio id="tone-3B" preload="auto" controls>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3B.ogg" type="audio/ogg"></source>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/3B.mp3" type="audio/mpeg"></source>
+    		</audio>
+    		<audio id="tone-4C" preload="auto" controls>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/4C.ogg" type="audio/ogg"></source>
+    			<source src="http://pianosounds.pixelass.com/tones/grand-piano/4C.mp3" type="audio/mpeg"></source>
+    		</audio>
+<p>Piano</p>
+<button onclick="playTone1()" type="button">1A</button>
+<button onclick="playTone2()" type="button">1A#</button>
+<button onclick="playTone3()" type="button">1B</button>
+<button onclick="playTone4()" type="button">2C</button>
+<button onclick="playTone5()" type="button">2C#</button>
+<button onclick="playTone6()" type="button">2D</button>
+<button onclick="playTone7()" type="button">2D#</button>
+<button onclick="playTone9()" type="button">2E</button>
+<button onclick="playTone10()" type="button">2F</button>
+<button onclick="playTone11()" type="button">2F#</button>
+<button onclick="playTone12()" type="button">2G</button>
+<button onclick="playTone13()" type="button">2G#</button>
+<button onclick="playTone14()" type="button">2A</button>
+<button onclick="playTone15()" type="button">2A#</button>
+<button onclick="playTone16()" type="button">2B</button>
+<button onclick="playTone17()" type="button">3C</button>
+<button onclick="playTone18()" type="button">3C#</button>
+<button onclick="playTone19()" type="button">3D</button>
+<button onclick="playTone20()" type="button">3D#</button>
+<button onclick="playTone21()" type="button">3E</button>
+<button onclick="playTone22()" type="button">3F</button>
+<button onclick="playTone23()" type="button">3F#</button>
+<button onclick="playTone24()" type="button">3G</button>
+<button onclick="playTone25()" type="button">3G#</button>
+<button onclick="playTone26()" type="button">3A</button>
+<button onclick="playTone27()" type="button">3B</button>
+<button onclick="playTone28()" type="button">3B#</button>
+<button onclick="playTone29()" type="button">4C</button>
 
-<footer>
-</footer>
-<div id="fb-root"></div>
+
 <script>
-  window.fbAsyncInit = function() {
-    FB.init({appId: 'your app id', status: true, cookie: true,
-             xfbml: true});
-  };
-  (function() {
-    var e = document.createElement('script'); e.async = true;
-    e.src = document.location.protocol +
-      '//connect.facebook.net/en_US/all.js';
-    document.getElementById('fb-root').appendChild(e);
-  }());
+var x1 = document.getElementById("tone-1A");
+var x2 = document.getElementById("tone-1As");
+var x3 = document.getElementById("tone-1B");
+var x4 = document.getElementById("tone-2C");
+var x5 = document.getElementById("tone-2Cs");
+var x6 = document.getElementById("tone-2D");
+var x7 = document.getElementById("tone-2Ds");
+var x9 = document.getElementById("tone-2E");
+var x10 = document.getElementById("tone-2F");
+var x11 = document.getElementById("tone-2Fs");
+var x12 = document.getElementById("tone-2G");
+var x13 = document.getElementById("tone-2Gs");
+var x14 = document.getElementById("tone-2A");
+var x15 = document.getElementById("tone-2As");
+var x16 = document.getElementById("tone-2B");
+var x17 = document.getElementById("tone-3C");
+var x18 = document.getElementById("tone-3Cs");
+var x19 = document.getElementById("tone-3D");
+var x20 = document.getElementById("tone-3Ds");
+var x21 = document.getElementById("tone-3E");
+var x22 = document.getElementById("tone-3F");
+var x23 = document.getElementById("tone-3Fs");
+var x24 = document.getElementById("tone-3G");
+var x25 = document.getElementById("tone-3Gs");
+var x26 = document.getElementById("tone-3A");
+var x27 = document.getElementById("tone-3As");
+var x28 = document.getElementById("tone-3B");
+var x29 = document.getElementById("tone-4C");
+
+function playTone1() {
+    x1.play();
+}
+function playTone2() {
+    x2.play();
+}
+function playTone3() {
+    x3.play();
+}
+function playTone4() {
+    x4.play();
+}
+function playTone5() {
+    x5.play();
+}
+function playTone6() {
+    x6.play();
+}
+function playTone7() {
+    x7.play();
+}
+function playTone8() {
+    x8.play();
+}
+function playTone9() {
+    x9.play();
+}
+function playTone10() {
+    x10.play();
+}
+function playTone11() {
+    x11.play();
+}
+function playTone12() {
+    x12.play();
+}
+function playTone13() {
+    x13.play();
+}
+function playTone14() {
+    x14.play();
+}
+function playTone15() {
+    x15.play();
+}
+function playTone16() {
+    x16.play();
+}
+function playTone17() {
+    x17.play();
+}
+function playTone18() {
+    x18.play();
+}
+function playTone19() {
+    x19.play();
+}
+function playTone20() {
+    x20.play();
+}
+function playTone21() {
+    x21.play();
+}
+function playTone22() {
+    x22.play();
+}
+function playTone23() {
+    x23.play();
+}
+function playTone24() {
+    x24.play();
+}
+function playTone25() {
+    x25.play();
+}
+function playTone26() {
+    x26.play();
+}
+function playTone27() {
+    x27.play();
+}
+function playTone28() {
+    x28.play();
+}
+function playTone29() {
+    x29.play();
+}
+
 </script>
-
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-21333207-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-
-
 </body>
 </html>
